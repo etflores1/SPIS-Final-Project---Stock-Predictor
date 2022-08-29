@@ -66,6 +66,17 @@ m, b = np.polyfit(x, y, 1)
 # plt.plot(x, m*x+b)		
 
 
+
+
+
+
+# HELLO MY FRIENDS
+
+
+
+
+
+
 # sns.relplot(
 #     data=hist,
 #     x="Date", y="Close"
