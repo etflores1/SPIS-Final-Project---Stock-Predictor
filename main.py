@@ -46,7 +46,7 @@ Define the training and testing data for the linear regression equation
 
 len_train = int(len(hist)*0.8)
 train = hist["Close"][:len_train]
-test = hist["Close"][len_train:])
+test = hist["Close"][len_train:]
 print('hist length = ', len(hist))
 print('train length = ', len(train))
 print('test length = ', len(test))
@@ -63,7 +63,7 @@ plt.plot(x, y, 'o')
 m, b = np.polyfit(x, y, 1) 
  
 # #add linear regression line to scatterplot  
-plt.plot(x, m*x+b)		
+# plt.plot(x, m*x+b)		
 
 
 # sns.relplot(
