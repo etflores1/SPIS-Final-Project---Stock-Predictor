@@ -54,16 +54,19 @@ print('test length = ', len(test))
 '''
 Creating a graph and regression equation
 '''
-x = [i for i in range(len(train))]#hist.Counter
-y = train
+x = hist.Counter #[i for i in range(len(train))]
+y = hist.Close #train
 # #create basic scatterplot 
 plt.plot(x, y, 'o') 
  
 # #obtain m (slope) and b(intercept) of linear regression line 
-# m, b = np.polyfit(x, y, 1) 
- 
+m, b = np.polyfit(x, y, 1) 
+b = 0
+print('y', '=', m,'x')
+
+
 # #add linear regression line to scatterplot  
-# plt.plot(x, m*x+b)		
+plt.plot(x, m*x+b)		
 
 # sns.relplot(
 #     data=hist,
@@ -79,3 +82,11 @@ Final commands
 # print(hist.index)
 # print(hist)
 
+'''
+Finding the market value of a date in the future
+'''
+
+predicted_market_date = int(input('enter a number'))
+x = predicted_market_date
+y = m*x + b
+print('predicted market value of', chosen_stock, '=', y)
