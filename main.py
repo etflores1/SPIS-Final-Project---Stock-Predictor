@@ -54,28 +54,16 @@ print('test length = ', len(test))
 '''
 Creating a graph and regression equation
 '''
-x = [i for i in range(len(test))]#hist.Counter
-y = test
+x = [i for i in range(len(train))]#hist.Counter
+y = train
 # #create basic scatterplot 
 plt.plot(x, y, 'o') 
  
 # #obtain m (slope) and b(intercept) of linear regression line 
-m, b = np.polyfit(x, y, 1) 
+# m, b = np.polyfit(x, y, 1) 
  
 # #add linear regression line to scatterplot  
 # plt.plot(x, m*x+b)		
-
-
-
-
-
-
-# HELLO MY FRIENDS
-
-
-
-
-
 
 # sns.relplot(
 #     data=hist,
