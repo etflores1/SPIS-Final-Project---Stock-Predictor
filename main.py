@@ -87,13 +87,14 @@ print(equation)
 Finding the market value of a date in the future
 '''
 
-mymodel = np.poly1d(np.polyfit(x, y, 3))
+mymodel = np.poly1d(np.polyfit(x, y, 10))
 myline = np.linspace(0, len(Counter), 100)
+
 
 plt.scatter(x, y)
 plt.plot(myline, mymodel(myline))
 
-predicted_market_date = int(input('enter a number: '))
+predicted_market_date = int(input('Enter number of days after IPO: '))
 x = predicted_market_date
 y = np.polyval(equation,x)
 # y = np.poly1d(np.polyfit(x, y, 3))
@@ -103,6 +104,9 @@ print('predicted market value of', chosen_stock, '=', y)
 Getting the Graph of the regression line
 '''
 
+plt.title('Stock Prediction Model')
+plt.xlabel('Days from IPO')
+plt.ylabel('Close Price ($)')
 plt.show()
 
 '''
