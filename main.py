@@ -80,7 +80,7 @@ y = hist.Close
 '''
 Polynomial Regression equation
 '''
-equation = np.poly1d(np.polyfit(x, y, 3))
+equation = np.poly1d(np.polyfit(x, y, 10))
 print(equation)
 
 '''
@@ -91,9 +91,9 @@ mymodel = np.poly1d(np.polyfit(x, y, 10))
 myline = np.linspace(0, len(Counter), 100)
 
 
-plt.scatter(x, y)
-plt.plot(myline, mymodel(myline))
-
+plt.scatter(x, y, marker = "x", color = "green")
+line, = plt.plot(myline, mymodel(myline))
+line.set_color("red")
 predicted_market_date = int(input('Enter number of days after IPO: '))
 x = predicted_market_date
 y = np.polyval(equation,x)
