@@ -73,6 +73,7 @@ for stock in stocks:
     forecaster = ForecasterAutoreg(regressor = regressor, lags = 20)
     forecaster.fit(y=hist_train['Close'])
 
+
     fig, ax=plt.subplots(figsize=(9, 4))
     hist_train['Close'].plot(ax=ax, label='train')
     hist_test['Close'].plot(ax=ax, label='test')
