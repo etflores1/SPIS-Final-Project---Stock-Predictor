@@ -7,6 +7,7 @@ import seaborn as sns
 Entering in the stock of choice and getting the information for that stock
 '''
 chosen_stock = yf.Ticker(input('Please enter a stock ticker: '))
+print('\n')
 stock_info = chosen_stock.info
 # stock_info.keys() for other properties you can explore
 
@@ -16,8 +17,9 @@ Getting certain information of market
 market_price = stock_info['regularMarketPrice']
 previous_close_price = stock_info['regularMarketPreviousClose']
     # day before market_price
-print('market price = ', market_price)
-print('previous close price = ', previous_close_price)
+print('Current market price = ', market_price)
+print('\n')
+# print('previous close price = ', previous_close_price)
 
 '''
 Getting history of the stock
@@ -29,7 +31,7 @@ Add a column which uses a counter instead of a date
 '''
 
 # print(type(hist))
-print(hist.columns, '\n')
+# print(hist.columns, '\n')
 hist = hist.drop(columns = ["High", "Low", "Stock Splits", "Dividends", "Volume"])
 
 Counter = []
@@ -47,9 +49,9 @@ Define the training and testing data for the linear regression equation
 len_train = int(len(hist)*0.8)
 train = hist["Close"][:len_train]
 test = hist["Close"][len_train:]
-print('hist length = ', len(hist))
-print('train length = ', len(train))
-print('test length = ', len(test))
+# print('hist length = ', len(hist))
+# print('train length = ', len(train))
+# print('test length = ', len(test))
 
 '''
 Creating a graph and regression equation
@@ -79,7 +81,7 @@ y = hist.Close
 Polynomial Regression equation
 '''
 equation = np.poly1d(np.polyfit(x, y, 10))
-print(equation)
+# print(equation)
 
 '''
 Finding the market value of a date in the future
@@ -92,8 +94,9 @@ myline = np.linspace(0, len(Counter), 100)
 plt.scatter(x, y, marker = "x", color = "green")
 line, = plt.plot(myline, mymodel(myline))
 line.set_color("red")
-predicted_market_date = int(input('Enter number of days after IPO: '))
-x = predicted_market_date
+predicted_market_date = int(input('Enter number of days in the future: '))
+print('\n')
+x = predicted_market_date + len(hist)
 y = np.polyval(equation,x)
 # y = np.poly1d(np.polyfit(x, y, 3))
 print('predicted market value of', chosen_stock, '=', y)
