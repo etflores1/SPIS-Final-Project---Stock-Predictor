@@ -75,8 +75,6 @@ y = hist.Close
 # #     x="Date", y="Close"
 # # )
 
-print(hist)
-
 '''
 Polynomial Regression equation
 '''

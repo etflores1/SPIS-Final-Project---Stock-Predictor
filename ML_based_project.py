@@ -77,7 +77,7 @@ for stock in stocks:
     hist_train['Close'].plot(ax=ax, label='train')
     hist_test['Close'].plot(ax=ax, label='test')
     predictions.plot(ax=ax, label='predictions')
-    ax.legend();
+    ax.legend(),
 
     # Making plot and organizing it
     plt.title('Stock Prediction Model')
@@ -85,3 +85,5 @@ for stock in stocks:
     plt.ylabel('Stock Price ($)')
     plt.xlim(datetime.date(2022, 7, 29), datetime.date(2022, 8, 30))
     plt.show()
+
+    
