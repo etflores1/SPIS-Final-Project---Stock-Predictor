@@ -6,8 +6,9 @@ import seaborn as sns
 '''
 Entering in the stock of choice and getting the information for that stock
 '''
+print(' ')
 chosen_stock = yf.Ticker(input('Please enter a stock ticker: '))
-print('\n')
+print(' ')
 stock_info = chosen_stock.info
 # stock_info.keys() for other properties you can explore
 
@@ -18,7 +19,7 @@ market_price = stock_info['regularMarketPrice']
 previous_close_price = stock_info['regularMarketPreviousClose']
     # day before market_price
 print('Current market price = ', market_price)
-print('\n')
+print(' ')
 # print('previous close price = ', previous_close_price)
 
 '''
@@ -30,14 +31,14 @@ hist = chosen_stock.history(period='max')
 # print(time_length)
 # whatevs = input('Enter a time length from the list above in which your prediction would be based upon: ')
 # hist = chosen_stock.history(period=whatevs)
-# print('\n')
+# print(' ')
 
 '''
 Add a column which uses a counter instead of a date
 '''
 
 # print(type(hist))
-# print(hist.columns, '\n')
+# print(hist.columns, ' ')
 hist = hist.drop(columns = ["High", "Low", "Stock Splits", "Dividends", "Volume"])
 
 Counter = []
@@ -101,11 +102,12 @@ plt.scatter(x, y, marker = "x", color = "green")
 line, = plt.plot(myline, mymodel(myline))
 line.set_color("red")
 predicted_market_date = int(input('Enter number of days in the future: '))
-print('\n')
+print(' ')
 x = predicted_market_date + len(hist)
 y = np.polyval(equation,x)
 # y = np.poly1d(np.polyfit(x, y, 3))
 print('predicted market value of', chosen_stock, '=', y)
+print(' ')
 
 '''
 Getting the Graph of the regression line
