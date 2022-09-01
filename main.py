@@ -12,17 +12,14 @@ print(' ')
 chosen_stock = yf.Ticker(input('Please enter a stock ticker: '))
 print(' ')
 stock_info = chosen_stock.info
-# stock_info.keys() for other properties you can explore
 
 '''
 Getting certain information of market
 '''
 market_price = stock_info['regularMarketPrice']
 previous_close_price = stock_info['regularMarketPreviousClose']
-    # day before market_price
 print('Current market price = ', market_price)
 print(' ')
-# print('previous close price = ', previous_close_price)
 
 '''
 Getting history of the stock
