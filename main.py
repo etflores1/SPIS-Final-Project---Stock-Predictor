@@ -4,7 +4,6 @@ Imports, Data Sets, Libraries
 import yfinance as yf
 import matplotlib.pyplot as plt
 import numpy as np
-import seaborn as sns
 
 '''
 Entering in the stock of choice and getting the information for that stock
