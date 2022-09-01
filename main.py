@@ -1,3 +1,6 @@
+'''
+Imports and Data Libraries
+'''
 import yfinance as yf
 import matplotlib.pyplot as plt
 import numpy as np
@@ -26,18 +29,12 @@ print(' ')
 Getting history of the stock
 '''
 hist = chosen_stock.history(period='max')
-
-# time_length = ['1d','5d','1mo','3mo','6mo','1y','2y','5y','10y','max']
-# print(time_length)
-# whatevs = input('Enter a time length from the list above in which your prediction would be based upon: ')
-# hist = chosen_stock.history(period=whatevs)
-# print(' ')
+    # time_lengths = ['1d','5d','1mo','3mo','6mo','1y','2y','5y','10y','max']
 
 '''
+Only use data from close market prices
 Add a column which uses a counter instead of a date
 '''
-
-# print(type(hist))
 # print(hist.columns, ' ')
 hist = hist.drop(columns = ["High", "Low", "Stock Splits", "Dividends", "Volume"])
 
@@ -46,8 +43,6 @@ for c in range(1, len(hist.index)+1):
     Counter.append(c)
 
 hist['Counter'] = Counter
-# hist["Counter"] = hist.index
-
 
 '''
 Define the training and testing data for the linear regression equation
@@ -91,37 +86,31 @@ equation = np.poly1d(np.polyfit(x, y, 10))
 # print(equation)
 
 '''
-Finding the market value of a date in the future
+Creating Scatter Plot and Regression Line
 '''
-
 mymodel = np.poly1d(np.polyfit(x, y, 10))
 myline = np.linspace(0, len(Counter), 100)
-
-
 plt.scatter(x, y, marker = "x", color = "green")
 line, = plt.plot(myline, mymodel(myline))
 line.set_color("red")
+
+'''
+Finding the market value of a date in the future
+'''
 predicted_market_date = int(input('Enter number of days in the future: '))
 print(' ')
+
 x = predicted_market_date + len(hist)
 y = np.polyval(equation,x)
-# y = np.poly1d(np.polyfit(x, y, 3))
+
 print('predicted market value of', chosen_stock, '=', y)
 print(' ')
 
-'''
-Getting the Graph of the regression line
-'''
 
+'''
+Graphing of the plot
+'''
 plt.title('Stock Prediction Model')
 plt.xlabel('Days from IPO')
 plt.ylabel('Close Price ($)')
 plt.show()
-
-'''
-Final commands
-'''
-# hist[close]
-#print(hist[["Counter", "Open", "Close"]])
-# print(hist.index)
-# print(hist)
