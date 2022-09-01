@@ -24,7 +24,13 @@ print('\n')
 '''
 Getting history of the stock
 '''
-hist = chosen_stock.history(period="max")
+hist = chosen_stock.history(period='max')
+
+# time_length = ['1d','5d','1mo','3mo','6mo','1y','2y','5y','10y','max']
+# print(time_length)
+# whatevs = input('Enter a time length from the list above in which your prediction would be based upon: ')
+# hist = chosen_stock.history(period=whatevs)
+# print('\n')
 
 '''
 Add a column which uses a counter instead of a date
