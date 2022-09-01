@@ -55,32 +55,10 @@ test = hist["Close"][len_train:]
 # print('test length = ', len(test))
 
 '''
-Creating a graph and regression equation
-'''
-x = hist.Counter 
-# x = [i for i in range(len(train))]
-y = hist.Close 
-# y = train
-# # #create basic scatterplot 
-# plt.plot(x, y, 'o') 
- 
-# # #obtain m (slope) and b(intercept) of linear regression line 
-# m, b = np.polyfit(x, y, 1) 
-# b = 0
-# print('y', '=', m,'x')
-
-
-# # #add linear regression line to scatterplot  
-# plt.plot(x, m*x+b)		
-
-# # sns.relplot(
-# #     data=hist,
-# #     x="Date", y="Close"
-# # )
-
-'''
 Polynomial Regression equation
 '''
+x = hist.Counter 
+y = hist.Close 
 equation = np.poly1d(np.polyfit(x, y, 10))
 # print(equation)
 
