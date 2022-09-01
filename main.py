@@ -1,5 +1,5 @@
 '''
-Imports and Data Libraries
+Imports, Data Sets, Libraries
 '''
 import yfinance as yf
 import matplotlib.pyplot as plt
