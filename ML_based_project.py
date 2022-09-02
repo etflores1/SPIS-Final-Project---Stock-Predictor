@@ -26,9 +26,9 @@ for stock in stocks:
     hist = hist.drop(columns = ["High", "Low", "Stock Splits", "Dividends", "Volume", "Open"])
     print('\n', chosen_stock, '\n')
 
-'''
-Data Preparation
-'''
+    '''
+    Data Preparation
+    '''
     hist = hist.asfreq('D')
         # Frequency = days
     hist = hist.fillna(method = 'bfill')
@@ -36,9 +36,9 @@ Data Preparation
     hist = hist.sort_index()
     hist.head()
 
-'''
-Spliting data into trained data and test data (to see how accurate the prediction is)
-'''
+    '''
+    Spliting data into trained data and test data (to see how accurate the prediction is)
+    '''
     steps = 7
     hist_train = hist[:-steps]
     hist_test  = hist[-steps:]
@@ -47,9 +47,9 @@ Spliting data into trained data and test data (to see how accurate the predictio
     print(f"Test dates  : {hist_test.index.min()} --- {hist_test.index.max()}  (n={len(hist_test)})")
     print(' ')
 
-'''
-Create and train forecaster
-'''
+    '''
+    Create and train forecaster
+    '''
     forecaster = ForecasterAutoreg(regressor = RandomForestRegressor(random_state=123),lags = 6)
     forecaster.fit(y=hist_train['Close'])
     forecaster
@@ -63,15 +63,15 @@ Create and train forecaster
     forecaster = ForecasterAutoreg(regressor = regressor, lags = 20)
     forecaster.fit(y=hist_train['Close'])
 
-'''
-Finding how erroneous the prediction is
-'''
+    '''
+    Finding how erroneous the prediction is
+    '''
     error = mean_squared_error(y_true = hist_test['Close'], y_pred = predictions)
     print(f"Test error = ", error,'\n')
 
-'''
-Plotting and organizing the training data points, testing data points, and prediction graph into a legend
-'''
+    '''
+    Plotting and organizing the training data points, testing data points, and prediction graph into a legend
+    '''
     fig, ax=plt.subplots(figsize=(9, 4))
     hist_train['Close'].plot(ax=ax, label='train')
     hist_test['Close'].plot(ax=ax, label='test')
